@@ -24,6 +24,10 @@ const Card: FC<CardProps> =
 
     const [state, setState] = useState(0);
     
+    if(state == -1){
+        setState(0)
+    }
+
   return (
     <div style={{width, height, 
         display: 'flex',
