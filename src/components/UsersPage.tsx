@@ -3,9 +3,11 @@ import { FC, useEffect, useState } from 'react'
 import { IUser } from '../types/types'
 import List from './List'
 import UserItem from './UserItem'
+import { useNavigate } from 'react-router-dom'
 
 const UsersPage: FC = () => {
-  
+
+    const navigate = useNavigate();
     const [users, setUsers] = useState<IUser[]>([])
   
     useEffect(() => {
@@ -21,9 +23,10 @@ const UsersPage: FC = () => {
       }
     }
   
-  
+    
+
     return (
-        <List items={users} renderItem={(user: IUser) => <UserItem user={user} key={user.id}/>}/>
+        <List items={users} renderItem={(user: IUser) => <UserItem onClick={(user: IUser) => {navigate('/user/' + user.id)}} user={user} key={user.id}/>}/>
 
   )
 }
